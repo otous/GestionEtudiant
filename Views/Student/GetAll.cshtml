@@ -1,0 +1,81 @@
+﻿@model IEnumerable<GestionEtudiants.Models.Student>
+
+@{
+    ViewBag.Title = "Page d'affiche de la liste des étudiants";
+    //var data = ViewData["students"];
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h1>GetAll</h1>
+
+<p>
+   @*@Html.ActionLink("Create","Create")*@
+    <a class="btn btn-primary" href="/students/create">Create</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Filiere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filiere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexe)
+            </td>
+            <td>
+                    
+                    <a class="btn btn-danger" href="/students/details">Details</a>
+                    <a class="btn btn-secondary" href="/students/edit">Edit</a>
+                    <a class="btn alert-dark" href="/students/delete">Delete</a>
+                   
+                @*@Html.ActionLink("Create","Create")
+                @Html.ActionLink("Edit", "Edit") @*new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Details", "Details")*@ @*new { /* id=item.PrimaryKey */ }) |*@
+               @Html.ActionLink("Delete", "Delete", new {  id=item.StudentId})
+
+
+                   @*<a class="btn btn-primary" href="#" role="button">Link</a>
+                    <button class="btn btn-primary" type="submit">Button</button>
+                    <input class="btn btn-primary" type="button" value="Input">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                    <input class="btn btn-primary" type="reset" value="Reset">*@
+            </td>
+        </tr>
+}
+    </tbody>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</table>
+

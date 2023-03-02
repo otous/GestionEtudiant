@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        header ul li {
+            list-style: none;
+        }
+    </style>
+    <environment names="Development">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+</head>
+<body>
+    <div class="container">
+    <header>
+        <span>Gestion des étudiants de l'UK</span>
+        <navbar>
+            <ul>
+            <li><a href="#">Hello</a></li>
+            <li><a href="#">Students All</a></li>
+            </ul>
+        </navbar>
+    </header>
+    <hr />
+    <div class="">
+        @RenderBody()
+    </div>
+    <hr />
+    <footer>
+        Mon footer
+    </footer>
+    </div>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
